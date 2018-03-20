@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DOMAIN=example.com
+MAIL=example@gmail.com
+cat << EOF > /etc/caddy/Caddyfile
+$DOMAIN {
+    gzip
+    log /var/log/caddy_access.log
+    tls $MAIL
+    root /var/tmp         
+    forwardproxy  { 
+        basicauth  name password
+        hide_ip
+        hide_via
+        probe_resistance helloworld.local
+    }
+}
+EOF

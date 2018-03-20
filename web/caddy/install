@@ -1,0 +1,16 @@
+#!/bin/bash
+
+basedir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+#plugins="http.forwardproxy,net"
+[ -z $plugins ] && plugins=""
+wget -O /tmp/caddy.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=$plugins&license=personal"
+
+rm -r /tmp/caddy  && mkdir -p /tmp/caddy 
+
+tar -C /tmp/caddy  -xzf /tmp/caddy.tar.gz
+
+sudo su - root -c "cp /tmp/caddy/caddy /usr/local/bin"
+
+sudo su - root -c "setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy"
+
