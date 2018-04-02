@@ -1,0 +1,28 @@
+#!/bin/bash
+
+basedir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+[ -z $VERSION ] && VERSION=20.2
+
+DATETIME=`date "+%Y%m%d-%H:%M:%S"`
+
+sudo apt-get install g++ gcc make libncurses5-dev libssl-dev
+
+wget -c -O $basedir/otp_src_$VERSION.tar.gz http://erlang.org/download/otp_src_$VERSION.tar.gz
+
+tar -zxf $basedir/otp_src_$VERSION.tar.gz -C $basedir
+
+if [[ $HOME == "/root" ]]; then
+    OPT=/opt
+    LOCAL_BIN=/usr/local/bin/
+else
+    OPT=$HOME/opt
+    LOCAL_BIN=$HOME/.local/bin
+fi
+[ -d $OPT/otp_$VERSION/ ] && mv $OPT/otp_$VERSION/ $OPT/otp_"$VERSION"_$DATETIME/
+
+cd $basedir/otp_src_$VERSION
+
+./configure --prefix=$OPT/otp_$VERSION/ --enable-builtin-zlib && make && make install
+
+ln -fs $OPT/otp_$VERSION/bin/* $LOCAL_BIN

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+basedir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+##echo $basedir
+[ -z $VERSION ] && VERSION=1.10
+wget -c -O $basedir/go$VERSION.linux-amd64.tar.gz https://dl.google.com/go/go$VERSION.linux-amd64.tar.gz
+
+sudo su - root -c "tar -C /usr/local -xzf $basedir/go$VERSION.linux-amd64.tar.gz";
+
+printf "\n\n###########################\nsource $basedir/setenv\n###########################\n\n将上述代码添到~/.bashrc或者/etc/profile，起到设置\$PATH 目的.\n\n"

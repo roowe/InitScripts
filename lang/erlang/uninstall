@@ -1,0 +1,22 @@
+#!/bin/bash
+
+[ -z $VERSION ] && VERSION=20.2
+
+if [[ $HOME == "/root" ]]; then
+    OPT=/opt
+    LOCAL_BIN=/usr/local/bin/
+else
+    OPT=$HOME/opt
+    LOCAL_BIN=$HOME/.local/bin
+fi
+
+rm -rf $LOCAL_BIN/ct_run
+rm -rf $LOCAL_BIN/dialyzer
+rm -rf $LOCAL_BIN/epmd
+rm -rf $LOCAL_BIN/erl
+rm -rf $LOCAL_BIN/erlc
+rm -rf $LOCAL_BIN/escript
+rm -rf $LOCAL_BIN/run_erl
+rm -rf $LOCAL_BIN/to_erl
+rm -rf $LOCAL_BIN/typer
+rm -rf $OPT/otp_$VERSION/

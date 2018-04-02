@@ -1,0 +1,17 @@
+*.swp
+*.tar
+*.gz
+*.zip
+*.bak
+*.log
+*.ovpn
+backend/ejabberd/jabsimul_utils/pure_conn_configs
+backend/ejabberd/jabsimul_utils/pure_conn_configs/*
+smtp/*.pem
+smtp/*.crt
+smtp/*.crt
+composer-setup.php
+composer-temp.phar
+*.deb
+*.deb.*
+otp_src*
