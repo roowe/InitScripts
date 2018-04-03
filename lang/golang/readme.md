@@ -1,3 +1,7 @@
+## 要求
+
+适用于Ubuntu 14.04和Ubuntu 16.04，其它Linux应该也适用。
+
 ## 安装
 
 ```shell
