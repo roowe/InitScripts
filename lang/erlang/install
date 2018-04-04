@@ -6,7 +6,7 @@ basedir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 DATETIME=`date "+%Y%m%d-%H:%M:%S"`
 
-sudo apt-get install g++ gcc make libncurses5-dev libssl-dev
+sudo apt-get install g++ gcc make libncurses5-dev libssl-dev -y
 
 wget -c -O $basedir/otp_src_$VERSION.tar.gz http://erlang.org/download/otp_src_$VERSION.tar.gz
 
@@ -23,6 +23,6 @@ fi
 
 cd $basedir/otp_src_$VERSION
 
-./configure --prefix=$OPT/otp_$VERSION/ --enable-builtin-zlib && make && make install
+./configure --prefix=$OPT/otp_$VERSION/ --enable-builtin-zlib --without-termcap  && make && make install
 
 ln -fs $OPT/otp_$VERSION/bin/* $LOCAL_BIN
