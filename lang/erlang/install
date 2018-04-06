@@ -23,6 +23,6 @@ fi
 
 cd $basedir/otp_src_$VERSION
 
-./configure --prefix=$OPT/otp_$VERSION/ --enable-builtin-zlib --without-termcap  && make && make install
+./configure --prefix=$OPT/otp_$VERSION/ --enable-builtin-zlib  && make && make install
 
 ln -fs $OPT/otp_$VERSION/bin/* $LOCAL_BIN
